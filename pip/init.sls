@@ -1,4 +1,4 @@
-{% from "pip/package-map.jinja" import pip with context %}
+{% from "pip/map.jinja" import pip with context %}
 
 pip:
   pkg:
