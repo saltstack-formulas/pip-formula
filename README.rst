@@ -9,7 +9,12 @@ Install pip
     <http://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html>`_.
 
 Available states
-----------------
+================
+
+.. contents::
+    :local:
 
 ``pip``
-    Installs pip.
+-------
+
+Installs pip.
