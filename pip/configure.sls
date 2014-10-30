@@ -1,4 +1,5 @@
-{%- from "pip/map.jinja" import pip with context %}
+include:
+  - pip
 
 pip-config:
   file.managed:
@@ -14,22 +15,25 @@ pip-config-enable:
 
 
 {#- This block provides the file pointed to by the cert option in the 
-    config file, if provided. Note that cert_contents takes precedence 
+    config file, if specified. Note that cert_contents takes precedence
     over cert_source. #}
-    
-{%- set cert_source = salt['pillar.get']('pip:config:cert_source', None) %}
-{%- set cert_contents = salt['pillar.get']('pip:config:cert_contents', None) %}
 
-{%- if cert_contents is not None %}
+{%- set pip_cert = salt['pillar.get']('pip:config:global:cert', none) %}
+{%- set cert_source = salt['pillar.get']('pip:cert:source', none) %}
+{%- set cert_contents = salt['pillar.get']('pip:cert:contents', none) %}
+
+{%- if pip_cert is not none %}
+{%- if cert_contents is not none %}
 pip-certificate:
   file.managed:
     - name: {{ pip_cert }}
     - makedirs: True
-    - contents: {{ cert_contents }}
-{%- elif cert_source is not None %}
+    - contents_pillar: pip:cert:contents
+{%- elif cert_source is not none %}
 pip-certificate:
   file.managed:
     - name: {{ pip_cert }}
     - makedirs: True
     - source: {{ cert_source }}
+{%- endif %}
 {%- endif %}
