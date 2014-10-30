@@ -18,3 +18,9 @@ Available states
 -------
 
 Installs pip.
+
+``pip.configure``
+-----------------
+
+Installs a system-wide configuration file for pip, using settings from
+pillar. This is useful if you run your own PyPI server, for example. 
