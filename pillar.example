@@ -1,0 +1,21 @@
+pip:
+  config:
+    global:
+      cert: /etc/pip/cert.pem # Use along with pip:cert, as below.
+      timeout: 120
+      default-timeout: 120
+    install:
+      extra-index-url: user:password@pip.myserver.local/path/
+      
+  cert:
+    # The cert specified here will be deployed to the location given in
+    # pip:config:global:cert above.
+    source: salt://pip/files/cert.pem
+
+    # Or, if you'd rather do it inline:
+    contents: |
+      -----BEGIN CERTIFICATE-----
+      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+      ...and so on
+      -----END CERTIFICATE-----
