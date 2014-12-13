@@ -1,6 +1,5 @@
 {% from "pip/map.jinja" import pip with context %}
 
 pip:
-  pkg:
-    - installed
+  pkg.installed:
     - name: {{ pip.pkg }}
