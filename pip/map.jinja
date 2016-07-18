@@ -12,5 +12,12 @@
           'gcc',
           'python-devel',
         ],
+        },
+    'Gentoo': {
+        'pip_pkg': 'dev-python/pip',
+        'dev_pkgs': [
+          'sys-devel/gcc',
+          'dev-lang/python',
+        ],
     },
 }, merge=salt['pillar.get']('pip:lookup')) %}
